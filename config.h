@@ -1,0 +1,12 @@
+#ifndef CONFIG_USER_H
+
+#define CONFIG_USER_H
+
+#undef TAPPING_TOGGLE
+#define TAPPING_TOGGLE 2
+
+#ifndef IGNORE_MOD_TAP_INTERRUPT
+#define IGNORE_MOD_TAP_INTERRUPT
+#endif
+
+#endif
