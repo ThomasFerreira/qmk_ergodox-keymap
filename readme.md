@@ -4,7 +4,7 @@
 
 ### Base layer
 
-![My Base layer](https://www.dropbox.com/s/3fziclhzl8y6a4s/base_layer.png?dl=1)
+![My Base layer](https://dl.dropboxusercontent.com/s/3fziclhzl8y6a4s/base_layer.png?dl=1)
 
 This is my ergodox keymap:
 - Purple keys are "double tap to activate mode" keys.
@@ -23,17 +23,17 @@ Thumb keys are also modified in dual keys mode to add a tab/enter keys on shift 
 
 ### Mouse mode
 
-![My mouse mode layer](https://www.dropbox.com/s/8xd93vihs6ekj3a/mouse_layer.png?dl=1)
+![My mouse mode layer](https://dl.dropboxusercontent.com/s/8xd93vihs6ekj3a/mouse_layer.png?dl=1)
 
 
 ### FN/Numpad mode
 
-![My FN/Numpad mode layer](https://www.dropbox.com/s/og98ep27sihimdt/fn-num_layer.png?dl=1)
+![My FN/Numpad mode layer](https://dl.dropboxusercontent.com/s/og98ep27sihimdt/fn-num_layer.png?dl=1)
 
 
 ### Nav mode
 
-![My nav mode layer](https://www.dropbox.com/s/g9wfax3jo2r0bg4/nav_layer.png?dl=1)
+![My nav mode layer](https://dl.dropboxusercontent.com/s/g9wfax3jo2r0bg4/nav_layer.png?dl=1)
 
 
 ### Led status
