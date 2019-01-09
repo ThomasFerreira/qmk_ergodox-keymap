@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 		  BP_Z, BP_B, BP_E_ACUTE, BP_P, BP_O, BP_E_GRAVE, KC_BSPC,
 		  BP_W, BP_A, BP_U, BP_I, BP_E, BP_COMMA,
 		  BP_E_CIRCUMFLEX, BP_A_GRAVE, BP_Y, BP_X, BP_DOT, BP_K, KC_TAB,
-		  BP_ALGR, KC_LGUI, KC_LALT, KC_LCTRL, LT(LAYER_NAV_KEYS, KC_ESC),
+		  KC_ALGR, KC_LGUI, KC_LALT, KC_LCTRL, LT(LAYER_NAV_KEYS, KC_ESC),
 
 		  TT(LAYER_MOUSE_KEYS), KC_AUDIO_VOL_UP,
 		  KC_AUDIO_MUTE,
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 		  KC_DEL, BP_DEAD_CIRCUMFLEX, BP_V, BP_D, BP_L, BP_J, BP_PERCENT,
 		  BP_C, BP_T, BP_S, BP_R, BP_N, BP_M,
 		  KC_ENTER, BP_APOSTROPHE, BP_Q, BP_G, BP_H, BP_F, BP_C_CEDILLA,
-		  LT(LAYER_NAV_KEYS, KC_ESC), KC_RCTRL, KC_LALT, KC_RGUI, BP_ALGR,
+		  LT(LAYER_NAV_KEYS, KC_ESC), KC_RCTRL, KC_LALT, KC_RGUI, KC_ALGR,
 
 		  KC_PGUP, TT(LAYER_FN_NUM_KEYS),
 		  KC_INSERT,
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 
 		  ____, ____, ____, ____, ____, ____, ____,
 		  ____, ____, ____, ____, ____, ____, ____,
-		  ____, RCTL_T(KC_KP_4), LALT_T(KC_KP_5), RGUI_T(KC_KP_6), BP_ALGR, ____,
+		  ____, RCTL_T(KC_KP_4), LALT_T(KC_KP_5), RGUI_T(KC_KP_6), KC_ALGR, ____,
 		  ____, ____, ____, ____, ____, ____, ____,
 		  ____, ____, ____, ____, ____,
 
@@ -167,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
    [LAYER_NAV_KEYS_DUAL] =
    LAYOUT_ergodox(____, ____, ____, ____, ____, ____, ____,
 		  ____, ____, ____, ____, ____, ____, ____,
-		  ____, BP_ALGR, LGUI_T(KC_LEFT), LALT_T(KC_DOWN), LCTL_T(KC_RIGHT), ____,
+		  ____, KC_ALGR, LGUI_T(KC_LEFT), LALT_T(KC_DOWN), LCTL_T(KC_RIGHT), ____,
 		  ____, ____, ____, ____, ____, ____, ____,
 		  ____, ____, ____, ____, ____,
 
@@ -178,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 
 		  ____, ____, ____, ____, ____, ____, ____,
 		  ____, ____, ____, ____, ____, ____, ____,
-		  ____, RCTL_T(KC_LEFT), LALT_T(KC_DOWN), RGUI_T(KC_RIGHT), BP_ALGR, ____,
+		  ____, RCTL_T(KC_LEFT), LALT_T(KC_DOWN), RGUI_T(KC_RIGHT), KC_ALGR, ____,
 		  ____, ____, ____, ____, ____, ____, ____,
 		  ____, ____, ____, ____, ____,
 
