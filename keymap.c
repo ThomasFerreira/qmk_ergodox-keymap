@@ -21,18 +21,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
   {
 
    [LAYER_BEPO_BASE] =
-   LAYOUT_ergodox(BP_DOLLAR, BP_DOUBLE_QUOTE, BP_LEFT_GUILLEMET, BP_RIGHT_GUILLEMET, BP_LEFT_PAREN, BP_RIGHT_PAREN, TT(LAYER_BEPO_BASE_DUAL),
-		  BP_Z, BP_B, BP_E_ACUTE, BP_P, BP_O, BP_E_GRAVE, KC_BSPC,
-		  BP_W, BP_A, BP_U, BP_I, BP_E, BP_COMMA,
-		  BP_E_CIRCUMFLEX, BP_A_GRAVE, BP_Y, BP_X, BP_DOT, BP_K, KC_TAB,
+   LAYOUT_ergodox(BP_DOLLAR, BP_DOUBLE_QUOTE, BP_LEFT_GUILLEMET, BP_RIGHT_GUILLEMET, BP_LEFT_PAREN, BP_RIGHT_PAREN, TT(LAYER_MOUSE_KEYS),
+		  BP_E_GRAVE, BP_B, BP_E_ACUTE, BP_P, BP_O, BP_DOT, KC_BSPC,
+		  BP_A_GRAVE, BP_A, BP_U, BP_I, BP_E, BP_K,
+		  BP_E_CIRCUMFLEX, BP_Z, BP_Y, BP_X, BP_W, BP_COMMA, KC_TAB,
 		  KC_ALGR, KC_LGUI, KC_LALT, KC_LCTRL, LT(LAYER_NAV_KEYS, KC_ESC),
 
-		  TT(LAYER_MOUSE_KEYS), KC_AUDIO_VOL_UP,
+		  TT(LAYER_FN_NUM_KEYS), KC_AUDIO_VOL_UP,
 		  KC_AUDIO_MUTE,
 		  KC_SPACE, KC_LSHIFT, KC_AUDIO_VOL_DOWN,
 
 
-		  TT(LAYER_BEPO_BASE_DUAL), BP_AT, BP_PLUS, BP_MINUS, BP_SLASH, BP_ASTERISK, BP_EQUAL,
+		  TT(LAYER_MOUSE_KEYS), BP_AT, BP_PLUS, BP_MINUS, BP_SLASH, BP_ASTERISK, BP_EQUAL,
 		  KC_DEL, BP_DEAD_CIRCUMFLEX, BP_V, BP_D, BP_L, BP_J, BP_PERCENT,
 		  BP_C, BP_T, BP_S, BP_R, BP_N, BP_M,
 		  KC_ENTER, BP_APOSTROPHE, BP_Q, BP_G, BP_H, BP_F, BP_C_CEDILLA,
@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 
 
    [LAYER_NAV_KEYS] =
-   LAYOUT_ergodox(_NO_, _NO_, KC_PAUSE, KC_SCROLLLOCK, KC_PSCREEN, _NO_, ____,
+   LAYOUT_ergodox(TO(LAYER_BEPO_BASE_DUAL), _NO_, KC_PAUSE, KC_SCROLLLOCK, KC_PSCREEN, _NO_, ____,
 		  _NO_, _NO_, KC_HOME, KC_UP, KC_END, _NO_, _NO_,
 		  _NO_, _NO_, KC_LEFT, KC_DOWN, KC_RIGHT, _NO_,
 		  _NO_, _NO_, KC_PASTE, KC_COPY, KC_CUT, _NO_, _NO_,
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 		  ____, ____, ____,
 
 
-		  ____, _NO_, KC_PSCREEN, KC_SCROLLLOCK, KC_PAUSE, _NO_, _NO_,
+		  ____, _NO_, KC_PSCREEN, KC_SCROLLLOCK, KC_PAUSE, _NO_, TO(LAYER_BEPO_BASE_DUAL),
 		  _NO_, _NO_, KC_HOME, KC_UP, KC_END, _NO_, _NO_,
 		  _NO_, KC_LEFT, KC_DOWN, KC_RIGHT, _NO_, _NO_,
 		  _NO_, _NO_, KC_CUT, KC_COPY, KC_PASTE, _NO_, _NO_,
@@ -189,32 +189,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 
   };
 
-uint32_t layer_state_set_user(uint32_t state) {
-  state = update_tri_layer_state(state, LAYER_BEPO_BASE_DUAL, LAYER_NAV_KEYS, LAYER_NAV_KEYS_DUAL);
-  state = update_tri_layer_state(state, LAYER_BEPO_BASE_DUAL, LAYER_FN_NUM_KEYS, LAYER_FN_NUM_KEYS_DUAL);
-  return state;
-}
+void matrix_init_user(void) {
+    ergodox_led_all_set(LED_BRIGHTNESS_LO);
+};
 
-void _update_leds(void) {
+void _update_leds(uint32_t state) {
   ergodox_board_led_off();
   ergodox_right_led_1_off();
   ergodox_right_led_2_off();
   ergodox_right_led_3_off();
 
-  if(layer_state & (1UL << (LAYER_BEPO_BASE_DUAL))) {
+  if(state & (1UL << (LAYER_MOUSE_KEYS))) {
     ergodox_right_led_1_on();
   }
 
-  if(layer_state & (1UL << (LAYER_FN_NUM_KEYS))) {
+  if(state & (1UL << (LAYER_BEPO_BASE_DUAL))) {
     ergodox_right_led_2_on();
   }
 
-  if(layer_state & (1UL << (LAYER_MOUSE_KEYS))) {
+  if(state & (1UL << (LAYER_FN_NUM_KEYS))) {
     ergodox_right_led_3_on();
   }
-
 };
 
-void matrix_scan_user(void) {
-  _update_leds();
-};
+uint32_t layer_state_set_user(uint32_t state) {
+  _update_leds(state);
+
+  state = update_tri_layer_state(state, LAYER_BEPO_BASE_DUAL, LAYER_NAV_KEYS, LAYER_NAV_KEYS_DUAL);
+  state = update_tri_layer_state(state, LAYER_BEPO_BASE_DUAL, LAYER_FN_NUM_KEYS, LAYER_FN_NUM_KEYS_DUAL);
+
+  return state;
+}
+
